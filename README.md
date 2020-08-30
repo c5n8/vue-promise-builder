@@ -1,8 +1,28 @@
-# Vue Promise Builder
+<p align="center"><img width="100" src="https://vuejs.org/images/logo.png" alt="Vue logo"></p>
 
-Component that builds itself based on the latest snapshot of interaction with a Promise.
+<h2 align="center">Vue Promise Builder</h2>
+
+<p align="center">
+  Component that builds itself based on the latest snapshot of interaction with a Promise.
+</p>
+
+#
+
+## Installation
+
+- Using NPM
+```
+npm install vue-promise-builder
+```
+
+- Using Yarn
+```
+yarn add vue-promise-builder
+```
 
 ## Usage
+
+> Component must contain only one root element!
 
 ```html
 <template>
