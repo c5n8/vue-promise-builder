@@ -3,7 +3,7 @@
 <h2 align="center">Vue Promise Builder</h2>
 
 <p align="center">
-  Renderless component that builds itself based on the latest snapshot of interaction with a Promise.
+  Component that builds itself based on the latest snapshot of interaction with a Promise.
 </p>
 
 #
