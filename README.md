@@ -1,12 +1,16 @@
-<p align="center"><img width="100" src="https://vuejs.org/images/logo.png" alt="Vue logo"></p>
+<p align="center"><img width="100" height="100" src="https://vuejs.org/images/logo.png" alt="Vue logo"></p>
 
 <h2 align="center">Vue Promise Builder</h2>
 
 <p align="center">
-  Component that builds itself based on the latest snapshot of interaction with a Promise.
+  Renderless component that builds itself based on the latest snapshot of interaction with a Promise.
 </p>
 
 #
+
+## Tips
+
+If you want same functionality, but as composition, then checkout [vue-promise-builder](https://github.com/c5n8/vue-promise-snapshot#readme).
 
 ## Installation
 
