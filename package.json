@@ -3,12 +3,17 @@
   "version": "0.0.16",
   "description": "Component that builds itself based on the latest snapshot of interaction with a Promise.",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/c5n8/vue-promise-builder"
+    "type": "git",
+    "url": "https://github.com/c5n8/vue-promise-builder"
   },
-  "homepage" : "https://github.com/c5n8/vue-promise-builder#readme",
+  "homepage": "https://github.com/c5n8/vue-promise-builder#readme",
   "license": "MIT",
-  "keywords": ["vue", "promise", "builder", "component"],
+  "keywords": [
+    "vue",
+    "promise",
+    "builder",
+    "component"
+  ],
   "main": "dist/vue-promise-builder.ssr.js",
   "browser": "dist/vue-promise-builder.esm.js",
   "module": "dist/vue-promise-builder.esm.js",
