@@ -10,7 +10,7 @@
 
 ## Tips
 
-If you want same functionality using `@vue/composition-api`, then checkout [vue-promise-snapshot](https://github.com/c5n8/vue-promise-snapshot#readme).
+If you want same functionality using `@vue/composition-api`, checkout [vue-promise-snapshot](https://github.com/c5n8/vue-promise-snapshot#readme).
 
 ## Installation
 
