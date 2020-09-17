@@ -34,10 +34,10 @@ export default {
       return this.isFulfilled || this.isRejected
     },
     hasResult() {
-      return this.isSettled && this.result !== null
+      return this.isSettled ? this.result != null : undefined
     },
     hasError() {
-      return this.isSettled && this.error !== null
+      return this.isSettled ? this.error != null : undefined
     },
   },
 
@@ -59,7 +59,6 @@ export default {
           result = await promise
         } catch (error) {
           this.error = error
-          this.result = null
           this.status = 'rejected'
 
           return
