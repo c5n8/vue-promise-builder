@@ -1,6 +1,6 @@
 {
   "name": "vue-promise-builder",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Component that builds itself based on the latest snapshot of interaction with a Promise.",
   "repository": {
     "type": "git",
