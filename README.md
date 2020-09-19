@@ -8,9 +8,9 @@
 
 #
 
-## Tips
+## News
 
-Checkout [vue-promise-snapshot](https://github.com/c5n8/vue-promise-snapshot#readme), if you want same functionality using `@vue/composition-api`, 
+Checkout [vue-promise-snapshot](https://github.com/c5n8/vue-promise-snapshot), if you want same functionality using `@vue/composition-api`. Vue 2 and Vue 3 compatible versions are available.
 
 ## Installation
 
@@ -26,41 +26,36 @@ yarn add vue-promise-builder
 
 ## Usage
 
-> Component must contain only one root element!
+⚠️ Component must contain only one root element!
 
 ```html
 <template>
-  <PromiseBuilder #default="snapshot" :promise="calculation">
+  <PromiseBuilder #default="snapshot" :promise="generation">
     <section>
-      <template v-if="snapshot.isStandby">
+      <div v-if="snapshot.isStandby">
         <div>Generate number 1-1000</div>
-        <div>
-          <button @click="startCalculation()">Start</button>
-        </div>
-      </template>
+        <button @click="generate()">Start</button>
+      </div>
 
-      <template v-if="snapshot.isPending">
-        <div>Generating...</div>
-      </template>
-      <template v-else-if="snapshot.isFulfilled">
-        <div>{{ snapshot.result }}</div>
-      </template>
-      <template v-else-if="snapshot.isRejected">
-        <div>{{ snapshot.error }}</div>
-      </template>
+      <div v-if="snapshot.isPending">
+        Generating...
+      </div>
+      <div v-else-if="snapshot.isFulfilled">
+        {{ snapshot.result }}
+      </div>
+      <div v-else-if="snapshot.isRejected">
+        {{ snapshot.error }}
+      </div>
 
-      <template v-if="snapshot.isSettled">
-        <div>
-          <button @click="startCalculation()">Retry</button>
-        </div>
-      </template>
+      <div v-if="snapshot.isSettled">
+        <button @click="generate()">Retry</button>
+      </div>
     </section>
   </PromiseBuilder>
 </template>
 
 <script>
 import { PromiseBuilder } from 'vue-promise-builder'
-import { sample, random } from 'lodash-es'
 
 export default {
   components: {
@@ -69,16 +64,16 @@ export default {
 
   data() {
     return {
-      calculation: null,
+      generation: null,
     }
   },
 
   methods: {
-    async startCalculation() {
-      this.calculation = calculate()
+    async generate() {
+      this.generation = _generate()
 
       try {
-        await this.calculation
+        await this.generation
       } catch (error) {
         //
       }
@@ -86,16 +81,15 @@ export default {
   },
 }
 
-export async function calculate() {
-  const duration = random(200, 2000)
+async function _generate() {
+  const random = (min, max) => Math.floor(Math.random() * Math.floor(max - min + 1)) + parseInt(min)
+  await new Promise((resolve) => setTimeout(resolve, random(200, 2000)))
 
-  await new Promise((resolve) => setTimeout(resolve, duration))
-
-  if (sample([true, false])) {
+  if (random(0, 1)) {
     throw new Error('Failed to generate')
   }
 
-  return random(0, 1000)
+  return random(1, 1000)
 }
 </script>
 ```
@@ -110,18 +104,18 @@ export async function calculate() {
 
 #### Slots
 
-| Slot    | Prop        | Type                                                  |
-| ------- | ----------- | ----------------------------------------------------- |
-| default | status      | string: 'standby', 'pending', 'fulfilled', 'rejected' |
-|         | result      | any                                                   |
-|         | error       | any                                                   |
-|         | isStandby   | boolean                                               |
-|         | isPending   | boolean                                               |
-|         | isFulfilled | boolean                                               |
-|         | isRejected  | boolean                                               |
-|         | isSettled   | boolean                                               |
-|         | hasResult   | boolean                                               |
-|         | hasError    | boolean                                               |
+| Slot    | Prop        | Type                                          |
+| ------- | ----------- | --------------------------------------------- |
+| default | status      | 'standby', 'pending', 'fulfilled', 'rejected' |
+|         | result      | any                                           |
+|         | error       | any                                           |
+|         | isStandby   | boolean                                       |
+|         | isPending   | boolean                                       |
+|         | isFulfilled | boolean                                       |
+|         | isRejected  | boolean                                       |
+|         | isSettled   | boolean                                       |
+|         | hasResult   | boolean                                       |
+|         | hasError    | boolean                                       |
 
 ## License
 

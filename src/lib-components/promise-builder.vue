@@ -45,12 +45,15 @@ export default {
     promise: {
       immediate: true,
       async handler(promise) {
+        this.error = undefined
+        this.result = undefined
+
         if (promise == null) {
+          this.status = 'standby'
+
           return
         }
 
-        this.error = undefined
-        this.result = undefined
         this.status = 'pending'
 
         let result
