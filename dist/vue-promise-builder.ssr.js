@@ -120,10 +120,10 @@ function _nonIterableRest() {
       return this.isFulfilled || this.isRejected;
     },
     hasResult: function hasResult() {
-      return this.isSettled && this.result !== null;
+      return this.isSettled ? this.result != null : undefined;
     },
     hasError: function hasError() {
-      return this.isSettled && this.error !== null;
+      return this.isSettled ? this.error != null : undefined;
     }
   },
   watch: {
@@ -138,31 +138,32 @@ function _nonIterableRest() {
             while (1) {
               switch (_context.prev = _context.next) {
                 case 0:
+                  _this.error = undefined;
+                  _this.result = undefined;
+
                   if (!(promise == null)) {
-                    _context.next = 2;
+                    _context.next = 5;
                     break;
                   }
 
+                  _this.status = 'standby';
                   return _context.abrupt("return");
 
-                case 2:
-                  _this.error = undefined;
-                  _this.result = undefined;
+                case 5:
                   _this.status = 'pending';
-                  _context.prev = 5;
-                  _context.next = 8;
+                  _context.prev = 6;
+                  _context.next = 9;
                   return promise;
 
-                case 8:
+                case 9:
                   result = _context.sent;
                   _context.next = 17;
                   break;
 
-                case 11:
-                  _context.prev = 11;
-                  _context.t0 = _context["catch"](5);
+                case 12:
+                  _context.prev = 12;
+                  _context.t0 = _context["catch"](6);
                   _this.error = _context.t0;
-                  _this.result = null;
                   _this.status = 'rejected';
                   return _context.abrupt("return");
 
@@ -176,7 +177,7 @@ function _nonIterableRest() {
                   return _context.stop();
               }
             }
-          }, _callee, null, [[5, 11]]);
+          }, _callee, null, [[6, 12]]);
         }))();
       }
     }
@@ -280,7 +281,7 @@ var __vue_inject_styles__ = undefined;
 var __vue_scope_id__ = undefined;
 /* module identifier */
 
-var __vue_module_identifier__ = "data-v-5eb214af";
+var __vue_module_identifier__ = "data-v-4e430198";
 /* functional template */
 
 var __vue_is_functional_template__ = undefined;

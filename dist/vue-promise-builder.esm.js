@@ -37,11 +37,11 @@ var script = {
     },
 
     hasResult() {
-      return this.isSettled && this.result !== null;
+      return this.isSettled ? this.result != null : undefined;
     },
 
     hasError() {
-      return this.isSettled && this.error !== null;
+      return this.isSettled ? this.error != null : undefined;
     }
 
   },
@@ -50,12 +50,14 @@ var script = {
       immediate: true,
 
       async handler(promise) {
+        this.error = undefined;
+        this.result = undefined;
+
         if (promise == null) {
+          this.status = 'standby';
           return;
         }
 
-        this.error = undefined;
-        this.result = undefined;
         this.status = 'pending';
         let result;
 
@@ -63,7 +65,6 @@ var script = {
           result = await promise;
         } catch (error) {
           this.error = error;
-          this.result = null;
           this.status = 'rejected';
           return;
         }
