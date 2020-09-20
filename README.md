@@ -3,16 +3,14 @@
 <h2 align="center">Vue Promise Builder</h2>
 
 <p align="center">
-  Component that builds itself based on the latest snapshot of interaction with a Promise.
+  Component that builds itself based on the latest snapshot of state of a Promise.
 </p>
 
 #
 
 ## News
 
-Checkout [vue-promise-snapshot](https://github.com/c5n8/vue-promise-snapshot), if you want same functionality using `@vue/composition-api`.
-
-Vue 2 and Vue 3 compatible versions are available.
+Checkout [vue-promise-snapshot](https://github.com/c5n8/vue-promise-snapshot), if you want same functionality using composition, with Vue 2 and Vue 3 compatible versions available.
 
 ## Installation
 
