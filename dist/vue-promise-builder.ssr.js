@@ -110,14 +110,14 @@ function _nonIterableRest() {
     isPending: function isPending() {
       return this.status === 'pending';
     },
+    isSettled: function isSettled() {
+      return this.status === 'fulfilled' || this.status === 'rejected';
+    },
     isFulfilled: function isFulfilled() {
-      return this.status === 'fulfilled';
+      return this.isSettled ? this.status === 'fulfilled' : undefined;
     },
     isRejected: function isRejected() {
-      return this.status === 'rejected';
-    },
-    isSettled: function isSettled() {
-      return this.isFulfilled || this.isRejected;
+      return this.isSettled ? this.status === 'rejected' : undefined;
     },
     hasResult: function hasResult() {
       return this.isSettled ? this.result != null : undefined;
@@ -281,7 +281,7 @@ var __vue_inject_styles__ = undefined;
 var __vue_scope_id__ = undefined;
 /* module identifier */
 
-var __vue_module_identifier__ = "data-v-4e430198";
+var __vue_module_identifier__ = "data-v-52dd4eb8";
 /* functional template */
 
 var __vue_is_functional_template__ = undefined;

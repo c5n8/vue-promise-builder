@@ -1,16 +1,19 @@
 {
   "name": "vue-promise-builder",
   "version": "1.0.8",
-  "description": "Component that builds itself based on the latest snapshot of interaction with a Promise.",
+  "description": "Component that builds itself based on the latest snapshot of state of a Promise.",
   "repository": {
     "type": "git",
     "url": "https://github.com/c5n8/vue-promise-builder"
   },
-  "homepage": "https://github.com/c5n8/vue-promise-builder#readme",
+  "homepage": "https://github.com/c5n8/vue-promise-builder",
   "license": "MIT",
   "keywords": [
     "vue",
+    "async",
     "promise",
+    "snapshot",
+    "state",
     "builder",
     "component"
   ],

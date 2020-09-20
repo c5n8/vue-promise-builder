@@ -33,7 +33,7 @@ yarn add vue-promise-builder
 ```html
 <template>
   <PromiseBuilder #default="snapshot" :promise="generation">
-    <section>
+    <div>
       <div v-if="snapshot.isStandby">
         <div>Generate number 1-1000</div>
         <button @click="generate()">Start</button>
@@ -52,7 +52,7 @@ yarn add vue-promise-builder
       <div v-if="snapshot.isSettled">
         <button @click="generate()">Retry</button>
       </div>
-    </section>
+    </div>
   </PromiseBuilder>
 </template>
 
@@ -72,7 +72,7 @@ export default {
 
   methods: {
     async generate() {
-      this.generation = _generate()
+      this.generation = generate(1, 1000)
 
       try {
         await this.generation
@@ -83,15 +83,18 @@ export default {
   },
 }
 
-async function _generate() {
-  const random = (min, max) => Math.floor(Math.random() * Math.floor(max - min + 1)) + parseInt(min)
+async function generate(min, max) {
   await new Promise((resolve) => setTimeout(resolve, random(200, 2000)))
 
   if (random(0, 1)) {
     throw new Error('Failed to generate')
   }
 
-  return random(1, 1000)
+  return random(min, max)
+}
+
+function random(min, max) {
+  return Math.floor(Math.random() * Math.floor(max - min + 1)) + min
 }
 </script>
 ```
@@ -106,18 +109,18 @@ async function _generate() {
 
 #### Slots
 
-| Slot    | Prop        | Type                                          |
-| ------- | ----------- | --------------------------------------------- |
-| default | status      | 'standby', 'pending', 'fulfilled', 'rejected' |
-|         | result      | any                                           |
-|         | error       | any                                           |
-|         | isStandby   | boolean                                       |
-|         | isPending   | boolean                                       |
-|         | isFulfilled | boolean                                       |
-|         | isRejected  | boolean                                       |
-|         | isSettled   | boolean                                       |
-|         | hasResult   | boolean                                       |
-|         | hasError    | boolean                                       |
+| Slot    | Prop        | Type                                                |
+| ------- | ----------- | --------------------------------------------------- |
+| default | status      | 'standby' \| 'pending' \| 'fulfilled' \| 'rejected' |
+|         | result      | any                                                 |
+|         | error       | any                                                 |
+|         | isStandby   | boolean                                             |
+|         | isPending   | boolean                                             |
+|         | isFulfilled | boolean                                             |
+|         | isRejected  | boolean \| undefined                                |
+|         | isSettled   | boolean \| undefined                                |
+|         | hasResult   | boolean \| undefined                                |
+|         | hasError    | boolean \| undefined                                |
 
 ## License
 
