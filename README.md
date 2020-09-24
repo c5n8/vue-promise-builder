@@ -36,18 +36,17 @@ yarn add vue-promise-builder
         <div>Generate number 1-1000</div>
         <button @click="generate()">Start</button>
       </div>
-
-      <div v-if="snapshot.isPending">
+      <div v-else-if="snapshot.isPending">
         Generating...
       </div>
-      <div v-else-if="snapshot.isFulfilled">
-        {{ snapshot.result }}
-      </div>
-      <div v-else-if="snapshot.isRejected">
-        {{ snapshot.error }}
-      </div>
+      <div v-else-if="snapshot.isSettled">
+        <div v-if="snapshot.isFulfilled">
+          {{ snapshot.result }}
+        </div>
+        <div v-else-if="snapshot.isRejected">
+          {{ snapshot.error }}
+        </div>
 
-      <div v-if="snapshot.isSettled">
         <button @click="generate()">Retry</button>
       </div>
     </div>
@@ -114,9 +113,9 @@ function random(min, max) {
 |         | error       | any                                                 |
 |         | isStandby   | boolean                                             |
 |         | isPending   | boolean                                             |
-|         | isFulfilled | boolean                                             |
+|         | isSettled   | boolean                                             |
+|         | isFulfilled | boolean \| undefined                                |
 |         | isRejected  | boolean \| undefined                                |
-|         | isSettled   | boolean \| undefined                                |
 |         | hasResult   | boolean \| undefined                                |
 |         | hasError    | boolean \| undefined                                |
 
