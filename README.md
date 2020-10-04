@@ -30,7 +30,7 @@ yarn add vue-promise-builder
 
 ```html
 <template>
-  <PromiseBuilder #default="snapshot" :promise="generation">
+  <PromiseBuilder v-slot="snapshot" :promise="generation">
     <div>
       <div v-if="snapshot.isStandby">
         <div>Generate number 1-1000</div>
